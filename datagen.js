@@ -7,9 +7,23 @@ const getData = (io) => {
         "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226",
       method: "get",
     });
-    io.emit("flight", response.data.states);
-    console.log(response.data.states[0][0]);
+
+    const flightData = parseData(response.data.states);
+
+    io.emit("flight", flightData);
+    // console.log(); // velocity
   }, 2000);
+};
+
+const parseData = (data) => {
+  return data.map((el) => {
+    return {
+      callsign: el[1],
+      longitude: el[5],
+      latitude: el[6],
+      velocity: el[9],
+    };
+  });
 };
 
 module.exports = getData;
