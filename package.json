@@ -6,8 +6,8 @@
   "author": "Ignet",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node ./node_modules/nodemon/bin/nodemon.js --ignore node_modules index.js"
+    "start": "node server.js",
+    "dev": "node ./node_modules/nodemon/bin/nodemon.js --ignore node_modules server.js"
   },
   "dependencies": {
     "express": "^4.17.1"
