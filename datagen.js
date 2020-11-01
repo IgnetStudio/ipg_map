@@ -12,7 +12,7 @@ const getData = (io) => {
 
     io.emit("flight", flightData);
     // console.log(); // velocity
-  }, 2000);
+  }, 15000);
 };
 
 const parseData = (data) => {
