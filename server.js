@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
+const getResponse = require("./datagen.js");
 const port = 3000;
 
 http.listen(port, () => {
@@ -16,3 +17,6 @@ io.on("connection", (socket) => {
 });
 
 app.use(express.static("public"));
+
+// passing example flight data from Aviation Stack API to the client
+getResponse(io);

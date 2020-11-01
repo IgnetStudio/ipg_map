@@ -28,6 +28,9 @@ function initMap() {
   });
 }
 
-// WebSocket protocol init
-
+// WebSocket initialize
 const socket = io();
+
+socket.on("flight", function (msg) {
+  console.log(msg);
+});
