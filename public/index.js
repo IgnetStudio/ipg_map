@@ -27,3 +27,7 @@ function initMap() {
     infowindow.open(map, marker);
   });
 }
+
+// WebSocket protocol init
+
+const socket = io();
