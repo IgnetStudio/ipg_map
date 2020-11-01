@@ -1,17 +1,15 @@
 const axios = require("axios").default;
 
-const getData = async (io) => {
-  const response = await axios({
-    url:
-      "http://api.aviationstack.com/v1/flights?access_key=01137c29af69dbeda0fd1e1a57c07aff&limit=3&flight_status=active",
-    method: "get",
-  });
-
-  // console.log(response.data.data[1]);
-
-  setInterval(function () {
-    io.emit("flight", response.data.data[1]);
-  }, 1000);
+const getData = (io) => {
+  setInterval(async () => {
+    const response = await axios({
+      url:
+        "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226",
+      method: "get",
+    });
+    io.emit("flight", response.data.states);
+    console.log(response.data.states[0][0]);
+  }, 2000);
 };
 
 module.exports = getData;

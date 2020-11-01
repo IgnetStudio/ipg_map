@@ -31,6 +31,11 @@ function initMap() {
 // WebSocket initialize
 const socket = io();
 
+let flightList = []; // this is the source of the assets list panel, to be displayed as an layer on the map
+
 socket.on("flight", function (msg) {
   console.log(msg);
+  flightList = msg;
+  // update flights list placeholder
+  // update markers on map placeholder
 });
