@@ -1,0 +1,12 @@
+// FONTS
+
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap&subset=latin-ext");
+
+@mixin main-font {
+    font-family: "Rubik", sans-serif;
+}
+
+@mixin side-font {
+    font-family: "Quicksand", sans-serif;
+}

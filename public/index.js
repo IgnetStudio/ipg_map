@@ -77,7 +77,7 @@ const createMarker = (map, info) => {
 function initMap() {
   const mapPosition = { lat: 46.056946, lng: 14.505751 };
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
+    zoom: 8,
     center: mapPosition,
   });
 }
