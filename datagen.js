@@ -11,8 +11,7 @@ const getData = (io) => {
     const flightData = parseData(response.data.states);
 
     io.emit("flight", flightData);
-    // console.log(); // velocity
-  }, 15000);
+  }, 4000);
 };
 
 const parseData = (data) => {

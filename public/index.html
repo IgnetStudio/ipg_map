@@ -5,31 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-      #map {
-        height: 100%;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="index.min.css">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgOB36mJSWNC1vUirKUMd-J332EsuSHms&callback=initMap" type="text/javascript"></script>
-
   </head>
 
   <body>
-    <h3>Google Maps</h3>
-    <!-- Asset list goes here -->
+    <h1>Flights</h1>
+    <h2>Real-time data</h2>
     <div class="asset-wrapper">
       <ul class="asset-list">
         <li class="asset-item">refreshed data placeholder</li>
       </ul>
     </div>
-    <!-- Map goes here -->
     <div id="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha512-hcPg/5yQzb6Ocz2NHy+XdRfmET1kTOtZc1l6Yt2TyriHW6WpK80hoLfaKG5wI7SqLt/x6IiV9kRoInYCA/BEWw==" crossorigin="anonymous"></script>
     <script src="./index.js"></script>

@@ -4,6 +4,13 @@ let map;
 let markers = [];
 let infoWindows = [];
 
+const onFlightClick = (callsign) => {
+  infoWindows.forEach((el) => el.close());
+  const markerIndex = getArrayIndex(callsign, markers);
+  const infoWindowIndex = getArrayIndex(callsign, infoWindows);
+  infoWindows[infoWindowIndex].open(map, markers[markerIndex]);
+};
+
 const getArrayIndex = (callsign, arrayToSearch) => {
   const testMarker = (marker) => {
     const doMatch = marker.title === callsign;
@@ -84,7 +91,7 @@ const createList = (data) => {
   const fragment = document.createDocumentFragment();
   data.forEach((el) => {
     const li = document.createElement("li");
-    li.innerHTML = `<b>${el.callsign}</b> ${el.longitude} ${el.latitude}`;
+    li.innerHTML = `<a onclick="onFlightClick('${el.callsign}')"><b>${el.callsign}</b> ${el.longitude} ${el.latitude}</a>`;
     fragment.appendChild(li);
   });
   list.appendChild(fragment);

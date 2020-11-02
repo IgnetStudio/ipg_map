@@ -18,5 +18,4 @@ io.on("connection", (socket) => {
 
 app.use(express.static("public"));
 
-// passing example flight data from Aviation Stack API to the client
 getResponse(io);
