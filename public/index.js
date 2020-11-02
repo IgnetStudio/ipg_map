@@ -2,34 +2,35 @@
 
 let map;
 let markers = [];
+let infoWindows = [];
 
-// (returns: Array) filter markers array to get markers with title key matched to callsign
-
-const getMarker = (callsign) => {
+const getArrayIndex = (callsign, arrayToSearch) => {
   const testMarker = (marker) => {
     const doMatch = marker.title === callsign;
     return doMatch;
   }; // returns Boolean; "true" if marker match to callsign
-
-  const filtredArray = markers.filter(validator); // returns Array (0 / 1 markers)
-  return filtredArray;
+  const obj = arrayToSearch.find(testMarker);
+  const index = arrayToSearch.indexOf(obj);
+  return index;
 };
 
 const handleMarker = (map, info) => {
-  const existingMarker = getMarker(info.callsign);
-  if (existingMarker.length == 0) {
+  const markerIndex = getArrayIndex(info.callsign, markers);
+  if (markerIndex === -1) {
     // console.log(`marker ${info.callsign} don't exist in marker array`);
     const marker = createMarker(map, info);
     markers.push(marker);
   } else {
     // console.log(`marker ${info.callsign} exists in marker array`);
-    existingMarker[0] = createMarker(map, info);
+    const mapPosition = { lat: info.latitude, lng: info.longitude };
+    markers[markerIndex].setPosition(mapPosition);
+    const infoWindowIndex = getArrayIndex(info.callsign, infoWindows);
+    infoWindows[infoWindowIndex].setContent(infoWindowContent(info));
   }
 };
 
-const createMarker = (map, info) => {
-  const lj = { lat: info.latitude, lng: info.longitude };
-  const contentString =
+const infoWindowContent = (info) => {
+  return (
     '<div id="content">' +
     '<div id="siteNotice">' +
     "</div>" +
@@ -39,31 +40,38 @@ const createMarker = (map, info) => {
     `<p>longitude: ${info.longitude}</p>` +
     `<p>velocity: ${info.velocity}</p>` +
     "</div>" +
-    "</div>";
+    "</div>"
+  );
+};
 
-  const infowindow = new google.maps.InfoWindow({
+const createMarker = (map, info) => {
+  const mapPosition = { lat: info.latitude, lng: info.longitude };
+  const contentString = infoWindowContent(info);
+
+  const infoWindow = new google.maps.InfoWindow({
     content: contentString,
   });
 
   const marker = new google.maps.Marker({
-    position: lj,
+    position: mapPosition,
     map,
     title: info.callsign,
   });
 
   marker.addListener("click", () => {
-    infowindow.open(map, marker);
+    infoWindow.open(map, marker);
   });
 
-  console.log(marker);
+  infoWindow.title = info.callsign;
+  infoWindows.push(infoWindow);
   return marker;
 };
 
 function initMap() {
-  const lj = { lat: 46.056946, lng: 14.505751 };
+  const mapPosition = { lat: 46.056946, lng: 14.505751 };
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 4,
-    center: lj,
+    center: mapPosition,
   });
 }
 
@@ -78,7 +86,6 @@ const createList = (data) => {
     const li = document.createElement("li");
     li.innerHTML = `<b>${el.callsign}</b> ${el.longitude} ${el.latitude}`;
     fragment.appendChild(li);
-    handleMarker(map, el);
   });
   list.appendChild(fragment);
 };
@@ -87,6 +94,7 @@ let flightList = []; // this is the source of the assets list panel, to be displ
 
 socket.on("flight", function (data) {
   createList(data);
-  // update flights list placeholder
-  // update markers on map placeholder
+  data.forEach((el) => {
+    handleMarker(map, el); // create or update marker
+  });
 });
