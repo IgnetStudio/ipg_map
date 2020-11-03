@@ -54,6 +54,7 @@ const infoWindowContent = (info) => {
 const createMarker = (map, info) => {
   const mapPosition = { lat: info.latitude, lng: info.longitude };
   const contentString = infoWindowContent(info);
+  const plane = "plane.svg";
 
   const infoWindow = new google.maps.InfoWindow({
     content: contentString,
@@ -61,6 +62,7 @@ const createMarker = (map, info) => {
 
   const marker = new google.maps.Marker({
     position: mapPosition,
+    icon: plane,
     map,
     title: info.callsign,
   });
@@ -77,26 +79,35 @@ const createMarker = (map, info) => {
 function initMap() {
   const mapPosition = { lat: 46.056946, lng: 14.505751 };
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 8,
+    zoom: 7,
     center: mapPosition,
   });
 }
 
-// WebSocket initialize & asset list render
+// asset list render
 
-const socket = io();
 const list = document.querySelector(".asset-list");
 const createList = (data) => {
   list.innerHTML = "";
   const fragment = document.createDocumentFragment();
   data.forEach((el) => {
     const li = document.createElement("li");
-    li.innerHTML = `<a onclick="onFlightClick('${el.callsign}')"><b>${el.callsign}</b> ${el.longitude} ${el.latitude}</a>`;
+    const a = document.createElement("a");
+
+    a.addEventListener("click", () => {
+      onFlightClick(el.callsign);
+    });
+    a.innerHTML = `<b>${el.callsign}</b> ${el.longitude} ${el.latitude}`;
+    li.classList.add("asset-item");
+    li.appendChild(a);
     fragment.appendChild(li);
   });
   list.appendChild(fragment);
 };
 
+// WebSocket initialize
+
+const socket = io();
 let flightList = []; // this is the source of the assets list panel, to be displayed as an layer on the map
 
 socket.on("flight", function (data) {
