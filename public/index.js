@@ -48,15 +48,14 @@ const infoWindowContent = (info) => {
   const vehicleResponse = `${hours}:${minutes}:${seconds}`;
   // Google Maps info window content
   return (
-    '<div id="content">' +
+    '<div id="content" class="info-window-wrapper">' +
     '<div id="siteNotice">' +
     "</div>" +
-    `<h1 id="firstHeading" class="firstHeading">${info.callsign}</h1>` +
-    '<div id="bodyContent">' +
+    `<h1 id="firstHeading" class="info-window-title">${info.callsign}</h1>` +
+    '<div id="bodyContent" class="info-window-content">' +
     `<h2>Flight from: ${info.origin_country}</h2>` +
     `<p>Vehicle last update: ${vehicleResponse}</p>` +
     `<p>Is flight grounded? ${info.on_ground}</p>` +
-    `<hr>` +
     `<p>velocity: ${info.velocity}</p>` +
     `<p>latitude: ${info.latitude} & longitude: ${info.longitude}</p>` +
     "</div>" +
@@ -110,7 +109,8 @@ const createList = (data) => {
     a.addEventListener("click", () => {
       onFlightClick(el.callsign);
     });
-    a.innerHTML = `<b>${el.callsign}</b> ${el.longitude} ${el.latitude} ${el.origin_country} `;
+    // asset list content
+    a.innerHTML = `<button>${el.callsign}</button>`;
     li.classList.add("asset-item");
     li.appendChild(a);
     fragment.appendChild(li);

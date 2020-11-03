@@ -1,0 +1,18 @@
+// MIXINS
+
+@mixin grid-center {
+    display: grid;
+    place-items: center;
+}
+
+@mixin text-uppercase {
+    text-transform: uppercase;
+}
+
+@mixin text-height {
+    line-height: 1.5;
+}
+
+@mixin box-shadow {
+    box-shadow: 1px 1px 5px rgba(0,0,0,.15);
+}

@@ -1,0 +1,14 @@
+// COMMON
+
+h1,
+h2 {
+    @include main-font;
+    @include text-uppercase;
+    @include text-height;
+}
+
+p,
+li {
+    @include side-font;
+    @include text-height;
+}
