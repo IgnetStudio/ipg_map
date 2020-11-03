@@ -37,15 +37,28 @@ const handleMarker = (map, info) => {
 };
 
 const infoWindowContent = (info) => {
+  // date format settings
+  const date = new Date(info.time_position * 1000);
+  let hours = date.getHours();
+  hours = hours < 10 ? "0" + hours : hours;
+  let minutes = date.getMinutes();
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  let seconds = date.getSeconds();
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  const vehicleResponse = `${hours}:${minutes}:${seconds}`;
+  // Google Maps info window content
   return (
     '<div id="content">' +
     '<div id="siteNotice">' +
     "</div>" +
     `<h1 id="firstHeading" class="firstHeading">${info.callsign}</h1>` +
     '<div id="bodyContent">' +
-    `<p>latitude: ${info.latitude}</p>` +
-    `<p>longitude: ${info.longitude}</p>` +
+    `<h2>Flight from: ${info.origin_country}</h2>` +
+    `<p>Vehicle last update: ${vehicleResponse}</p>` +
+    `<p>Is flight grounded? ${info.on_ground}</p>` +
+    `<hr>` +
     `<p>velocity: ${info.velocity}</p>` +
+    `<p>latitude: ${info.latitude} & longitude: ${info.longitude}</p>` +
     "</div>" +
     "</div>"
   );
@@ -97,7 +110,7 @@ const createList = (data) => {
     a.addEventListener("click", () => {
       onFlightClick(el.callsign);
     });
-    a.innerHTML = `<b>${el.callsign}</b> ${el.longitude} ${el.latitude}`;
+    a.innerHTML = `<b>${el.callsign}</b> ${el.longitude} ${el.latitude} ${el.origin_country} `;
     li.classList.add("asset-item");
     li.appendChild(a);
     fragment.appendChild(li);
