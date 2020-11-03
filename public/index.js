@@ -93,6 +93,8 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 7,
     center: mapPosition,
+    zoomControl: true,
+    scaleControl: true,
   });
 }
 

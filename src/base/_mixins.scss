@@ -1,5 +1,7 @@
 // MIXINS
 
+$helper-space: 1em;
+
 @mixin grid-center {
     display: grid;
     place-items: center;
@@ -14,5 +16,5 @@
 }
 
 @mixin box-shadow {
-    box-shadow: 1px 1px 5px rgba(0,0,0,.15);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
 }

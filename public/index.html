@@ -11,11 +11,18 @@
 
   <body>
     <div class="asset-wrapper">
-      <h1>Flights</h1>
-      <h2>Real-time data</h2>
-      <ul class="asset-list">
-        <li class="asset-item">refreshed data placeholder</li>
-      </ul>
+      <!-- <h1>Flights</h1> -->
+      <!-- <h2>Real-time data</h2> -->
+      <input id="asset-menu" type="checkbox" class="asset-checkbox">
+      <label for="asset-menu" class="asset-label" role="button" aria-labelledby="menu"></label>
+      <nav role="navigation" class="asset-sidebar">
+        <ul class="asset-list">
+          <li class="asset-item">
+            <!-- placeholder for refreshed data -->
+            <div class="asset-loader"></div>
+          </li>
+        </ul>
+      </nav>
     </div>
     <div id="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha512-hcPg/5yQzb6Ocz2NHy+XdRfmET1kTOtZc1l6Yt2TyriHW6WpK80hoLfaKG5wI7SqLt/x6IiV9kRoInYCA/BEWw==" crossorigin="anonymous"></script>

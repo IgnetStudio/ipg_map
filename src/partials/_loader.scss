@@ -1,0 +1,25 @@
+// LOADER
+
+.asset-loader {
+    border: 3px solid $color-violet;
+    border-radius: $helper-space;
+    height: $helper-space;
+    width: $helper-space;
+    animation: loader-pulse 1s ease-out infinite;
+    animation-iteration-count: infinite;
+    opacity: 0;
+}
+
+@keyframes loader-pulse {
+    0% {
+        -webkit-transform: scale(0.1, 0.1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1.2, 1.2);
+        opacity: 0;
+    }
+}

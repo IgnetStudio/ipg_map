@@ -1,5 +1,10 @@
 // COMMON
 
+#map {
+    height: 100%;
+    // width: 75vw;
+}
+
 h1,
 h2 {
     @include main-font;
