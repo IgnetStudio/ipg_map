@@ -50,7 +50,9 @@
 
 .asset-sidebar {
     display: flex;
-    background: $color-primary;
+    justify-content: center;
+    background: $gradient-default;
+    width: 100%;
     height: 90vh;
 }
 
@@ -60,9 +62,13 @@
 
 .asset-list {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    overflow-y: scroll;
-    padding: 0;
+    overflow: auto;
+    width: 100%;
+    background: $color-primary;
+    margin: $helper-space / 4;
+    padding: $helper-space (0);
 
     .asset-item {
         display: flex;
@@ -70,5 +76,6 @@
         flex: 1 0 auto;
         align-items: center;
         list-style: none;
+        margin-bottom: $helper-space;
     }
 }

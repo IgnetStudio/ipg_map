@@ -92,9 +92,9 @@ const createMarker = (map, info) => {
 };
 
 function initMap() {
-  const mapPosition = { lat: 46.056946, lng: 14.505751 };
+  const mapPosition = { lat: 49.188156, lng: 17.583896 }; // Ljubljana & Warszawa middle point
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 7,
+    zoom: 6,
     center: mapPosition,
     zoomControl: true,
     scaleControl: true,
@@ -102,7 +102,6 @@ function initMap() {
 }
 
 // asset list render
-
 const list = document.querySelector(".asset-list");
 const createList = (data) => {
   list.innerHTML = "";
