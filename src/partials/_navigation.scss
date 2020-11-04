@@ -7,7 +7,7 @@
     right: 0;
     z-index: 1;
     height: 100vh;
-    width: 15vw;
+    width: 20vw;
     background: transparent;
 }
 
@@ -48,12 +48,29 @@
     height: $helper-space * 2.5;
 }
 
+.asset-summary,
 .asset-sidebar {
     display: flex;
     justify-content: center;
     background: $gradient-default;
     width: 100%;
     height: 90vh;
+    opacity: 0;
+}
+
+.asset-summary {
+    @include grid-center;
+    position: inherit;
+    opacity: 1;
+    width: auto;
+}
+
+.asset-details {
+    margin: $helper-space / 4;
+    padding: $helper-space (0);
+    background: $color-primary;
+    width: 100%;
+    min-width: 20vw;
 }
 
 .asset-toggle:checked ~ .asset-sidebar {
@@ -76,6 +93,8 @@
         flex: 1 0 auto;
         align-items: center;
         list-style: none;
-        margin-bottom: $helper-space;
+        &:not(:last-child) {
+            margin-bottom: $helper-space;
+        }
     }
 }

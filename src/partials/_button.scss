@@ -18,18 +18,18 @@
     span {
         @include flex-center;
         @include text-uppercase;
-        background: $color-primary;
+        @include transition-all;
+        background: $color-light;
         color: $color-side;
         height: 100%;
         width: 100%;
         padding: 0.75em;
         border-radius: 2em;
-        font-size: 1em;
-        transition: all 0.3s linear;
+        font-size: $helper-space;
     }
 
     &:hover span {
-        background: transparent;
+        background-image: $gradient-default;
         color: $color-primary;
     }
 }
