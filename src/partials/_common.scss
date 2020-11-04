@@ -1,8 +1,12 @@
 // COMMON
 
+body {
+    cursor: url("img/cursor.svg"), auto;
+}
+
 #map {
     height: 100%;
-    // width: 75vw;
+    width: 85vw;
 }
 
 h1,
@@ -16,4 +20,13 @@ p,
 li {
     @include side-font;
     @include text-height;
+}
+
+button,
+a,
+img {
+    cursor: url("img/pointer.svg"), pointer;
+    &:focus {
+        outline: 2px solid $color-violet;
+    }
 }

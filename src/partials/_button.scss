@@ -1,0 +1,35 @@
+/* BUTTON */
+
+.asset-button {
+    @include border-radius;
+    background-image: $gradient-default;
+    display: block;
+    position: relative;
+    height: auto;
+    width: 8em;
+    padding: 0.25em;
+    border-radius: 2em;
+    text-decoration: none;
+
+    @include view-mobile {
+        width: auto;
+    }
+
+    span {
+        @include flex-center;
+        @include text-uppercase;
+        background: $color-primary;
+        color: $color-side;
+        height: 100%;
+        width: 100%;
+        padding: 0.75em;
+        border-radius: 2em;
+        font-size: 1em;
+        transition: all 0.3s linear;
+    }
+
+    &:hover span {
+        background: transparent;
+        color: $color-primary;
+    }
+}

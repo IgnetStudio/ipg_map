@@ -1,1 +1,15 @@
-// RWD STYLES GOES HERE
+// RWD
+
+$device-break: 768px;
+
+@mixin view-mobile {
+    @media screen and (max-width: #{$device-break - 1px}) {
+        @content;
+    }
+}
+
+@mixin view-desktop {
+    @media screen and (min-width: #{$device-break}) {
+        @content;
+    }
+}

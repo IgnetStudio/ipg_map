@@ -7,7 +7,7 @@
     right: 0;
     z-index: 1;
     height: 100vh;
-    width: 5vw;
+    width: 15vw;
     background: transparent;
 }
 
@@ -19,17 +19,20 @@
 .asset-label {
     display: block;
     position: absolute;
-    top: 0;
+    top: $helper-space;
     z-index: 1;
     width: $helper-space * 2.5;
     height: $helper-space * 2.5;
     background-color: $color-violet;
+    &::before {
+        content: url("img/plane.svg");
+    }
 }
 
 .asset-checkbox:checked ~ .asset-label:before {
     display: block;
     position: absolute;
-    content: url("close.svg");
+    content: url("img/close.svg");
     top: 0;
     left: 0;
     z-index: 2;
@@ -41,7 +44,6 @@
     display: flex;
     background: $color-primary;
     overflow: hidden;
-    width: auto;
     height: 100vh;
 }
 
@@ -54,12 +56,12 @@
     flex-direction: column;
     padding: 0;
 
-    li {
+    .asset-item {
         display: flex;
         position: relative;
         flex: 1 0 auto;
         align-items: center;
-        padding: $helper-space ($helper-space * 2);
+        padding: $helper-space * 2;
         list-style: none;
     }
 }

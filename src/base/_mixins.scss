@@ -2,9 +2,19 @@
 
 $helper-space: 1em;
 
+@mixin border-radius {
+    border-radius: $helper-space;
+}
+
 @mixin grid-center {
     display: grid;
     place-items: center;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @mixin text-uppercase {

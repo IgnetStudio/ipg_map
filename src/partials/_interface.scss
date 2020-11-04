@@ -1,16 +1,5 @@
 // INTERFACE
 
-.asset-wrapper {
-    @include grid-center;
-    @include box-shadow;
-    background: $color-primary;
-    position: fixed;
-    right: 0;
-    z-index: 1;
-    height: 100vh;
-    width: 25vw;
-}
-
 .info-window-wrapper {
     @include grid-center;
 }
@@ -25,7 +14,7 @@
 // Google Maps overwrite
 
 button.gm-ui-hover-effect {
-    background: url("close.svg") !important;
+    background: url("img/close.svg") !important;
     & > img {
         visibility: hidden;
     }

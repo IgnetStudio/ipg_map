@@ -66,7 +66,7 @@ const infoWindowContent = (info) => {
 const createMarker = (map, info) => {
   const mapPosition = { lat: info.latitude, lng: info.longitude };
   const contentString = infoWindowContent(info);
-  const plane = "plane.svg";
+  const plane = "img/plane.svg";
 
   const infoWindow = new google.maps.InfoWindow({
     content: contentString,
@@ -105,17 +105,20 @@ const createList = (data) => {
   list.innerHTML = "";
   const fragment = document.createDocumentFragment();
   data.forEach((el) => {
-    const li = document.createElement("li");
+    // prepare asset list link
     const a = document.createElement("a");
-
+    a.classList.add("asset-button");
+    a.setAttribute("role", "button");
     a.addEventListener("click", () => {
       onFlightClick(el.callsign);
     });
-    // asset list content
-    a.innerHTML = `<button>${el.callsign}</button>`;
+    // prepare asset list item
+    const li = document.createElement("li");
     li.classList.add("asset-item");
     li.appendChild(a);
     fragment.appendChild(li);
+    // set asset list content
+    a.innerHTML = `<span>${el.callsign}</span>`;
   });
   list.appendChild(fragment);
 };
