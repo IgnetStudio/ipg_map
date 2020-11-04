@@ -1,5 +1,10 @@
 // INTERFACE
 
+#map {
+    height: 100%;
+    width: 85vw;
+}
+
 .info-window-wrapper {
     @include grid-center;
 }

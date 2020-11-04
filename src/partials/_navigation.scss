@@ -11,49 +11,57 @@
     background: transparent;
 }
 
-.asset-checkbox {
+.asset-menu {
+    @include flex-center;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    height: 10vh;
+}
+
+.asset-toggle {
     position: absolute;
     opacity: 0;
+    cursor: url("img/pointer.svg"), pointer;
 }
 
 .asset-label {
     display: block;
     position: absolute;
-    top: $helper-space;
     z-index: 1;
     width: $helper-space * 2.5;
     height: $helper-space * 2.5;
-    background-color: $color-violet;
+    cursor: url("img/pointer.svg"), pointer;
     &::before {
         content: url("img/plane.svg");
     }
 }
 
-.asset-checkbox:checked ~ .asset-label:before {
+.asset-toggle:checked ~ .asset-label:before {
     display: block;
     position: absolute;
     content: url("img/close.svg");
     top: 0;
     left: 0;
     z-index: 2;
-    width: $helper-space;
-    height: $helper-space;
+    width: $helper-space * 2.5;
+    height: $helper-space * 2.5;
 }
 
 .asset-sidebar {
     display: flex;
     background: $color-primary;
-    overflow: hidden;
-    height: 100vh;
+    height: 90vh;
 }
 
-.asset-checkbox:checked ~ .asset-sidebar {
-    min-height: 100vh;
+.asset-toggle:checked ~ .asset-sidebar {
+    min-height: 90vh;
 }
 
 .asset-list {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
     padding: 0;
 
     .asset-item {
@@ -61,7 +69,6 @@
         position: relative;
         flex: 1 0 auto;
         align-items: center;
-        padding: $helper-space * 2;
         list-style: none;
     }
 }

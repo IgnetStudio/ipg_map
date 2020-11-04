@@ -20,13 +20,13 @@ const getData = (io) => {
 const parseData = (data) => {
   return data.map((el) => {
     return {
-      callsign: el[1], // string (8 chars, can be null if no callsign has been received)
-      origin_country: el[2], // string (ICAO 24-bit address)
-      time_position: el[3], // int (Unix timestamp, seconds, for the last position update, can be null if position not responed within the past 15s)
-      longitude: el[5], // float (WGS-84 longitude in decimal degrees, can be null)
-      latitude: el[6], // as above, but for latitude
-      on_ground: el[8], // boolean (value which indicates if plane has landed)
-      velocity: el[9], // float (velocity over ground in m/s, can be null)
+      vehicleCallsign: el[1], // string (8 chars, can be null if no callsign has been received)
+      vehicleCountry: el[2], // string (ICAO 24-bit address)
+      vehicleSignal: el[3], // int (Unix timestamp, seconds, for the last position update, can be null if position not responed within the past 15s)
+      vehicleLongitude: el[5], // float (WGS-84 longitude in decimal degrees, can be null)
+      vehicleLatitude: el[6], // as above, but for latitude
+      vehicleStatus: el[8], // boolean (value which indicates if plane has landed)
+      vehicleVelocity: el[9], // float (vehicleVelocity over ground in m/s, can be null)
     };
   });
 };

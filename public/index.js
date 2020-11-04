@@ -4,41 +4,44 @@ let map;
 let markers = [];
 let infoWindows = [];
 
-const onFlightClick = (callsign) => {
+const onFlightClick = (vehicleCallsign) => {
   infoWindows.forEach((el) => el.close());
-  const markerIndex = getArrayIndex(callsign, markers);
-  const infoWindowIndex = getArrayIndex(callsign, infoWindows);
+  const markerIndex = getArrayIndex(vehicleCallsign, markers);
+  const infoWindowIndex = getArrayIndex(vehicleCallsign, infoWindows);
   infoWindows[infoWindowIndex].open(map, markers[markerIndex]);
 };
 
-const getArrayIndex = (callsign, arrayToSearch) => {
+const getArrayIndex = (vehicleCallsign, arrayToSearch) => {
   const testMarker = (marker) => {
-    const doMatch = marker.title === callsign;
+    const doMatch = marker.title === vehicleCallsign;
     return doMatch;
-  }; // returns Boolean; "true" if marker match to callsign
+  }; // returns Boolean; "true" if marker match to vehicleCallsign
   const obj = arrayToSearch.find(testMarker);
   const index = arrayToSearch.indexOf(obj);
   return index;
 };
 
 const handleMarker = (map, info) => {
-  const markerIndex = getArrayIndex(info.callsign, markers);
+  const markerIndex = getArrayIndex(info.vehicleCallsign, markers);
   if (markerIndex === -1) {
-    // console.log(`marker ${info.callsign} don't exist in marker array`);
+    // console.log(`marker ${info.vehicleCallsign} don't exist in marker array`);
     const marker = createMarker(map, info);
     markers.push(marker);
   } else {
-    // console.log(`marker ${info.callsign} exists in marker array`);
-    const mapPosition = { lat: info.latitude, lng: info.longitude };
+    // console.log(`marker ${info.vehicleCallsign} exists in marker array`);
+    const mapPosition = {
+      lat: info.vehicleLatitude,
+      lng: info.vehicleLongitude,
+    };
     markers[markerIndex].setPosition(mapPosition);
-    const infoWindowIndex = getArrayIndex(info.callsign, infoWindows);
+    const infoWindowIndex = getArrayIndex(info.vehicleCallsign, infoWindows);
     infoWindows[infoWindowIndex].setContent(infoWindowContent(info));
   }
 };
 
 const infoWindowContent = (info) => {
   // date format settings
-  const date = new Date(info.time_position * 1000);
+  const date = new Date(info.vehicleSignal * 1000);
   let hours = date.getHours();
   hours = hours < 10 ? "0" + hours : hours;
   let minutes = date.getMinutes();
@@ -51,20 +54,20 @@ const infoWindowContent = (info) => {
     '<div id="content" class="info-window-wrapper">' +
     '<div id="siteNotice">' +
     "</div>" +
-    `<h1 id="firstHeading" class="info-window-title">${info.callsign}</h1>` +
+    `<h1 id="firstHeading" class="info-window-title">${info.vehicleCallsign}</h1>` +
     '<div id="bodyContent" class="info-window-content">' +
-    `<h2>Flight from: ${info.origin_country}</h2>` +
+    `<h2>Flight from: ${info.vehicleCountry}</h2>` +
     `<p>Vehicle last update: ${vehicleResponse}</p>` +
-    `<p>Is flight grounded? ${info.on_ground}</p>` +
-    `<p>velocity: ${info.velocity}</p>` +
-    `<p>latitude: ${info.latitude} & longitude: ${info.longitude}</p>` +
+    `<p>Is flight grounded? ${info.vehicleStatus}</p>` +
+    `<p>Vehicle velocity: ${info.vehicleVelocity}</p>` +
+    `<p>Latitude: ${info.vehicleLatitude} & Longitude: ${info.vehicleLongitude}</p>` +
     "</div>" +
     "</div>"
   );
 };
 
 const createMarker = (map, info) => {
-  const mapPosition = { lat: info.latitude, lng: info.longitude };
+  const mapPosition = { lat: info.vehicleLatitude, lng: info.vehicleLongitude };
   const contentString = infoWindowContent(info);
   const plane = "img/plane.svg";
 
@@ -76,14 +79,14 @@ const createMarker = (map, info) => {
     position: mapPosition,
     icon: plane,
     map,
-    title: info.callsign,
+    title: info.vehicleCallsign,
   });
 
   marker.addListener("click", () => {
     infoWindow.open(map, marker);
   });
 
-  infoWindow.title = info.callsign;
+  infoWindow.title = info.vehicleCallsign;
   infoWindows.push(infoWindow);
   return marker;
 };
@@ -110,7 +113,7 @@ const createList = (data) => {
     a.classList.add("asset-button");
     a.setAttribute("role", "button");
     a.addEventListener("click", () => {
-      onFlightClick(el.callsign);
+      onFlightClick(el.vehicleCallsign);
     });
     // prepare asset list item
     const li = document.createElement("li");
@@ -118,7 +121,7 @@ const createList = (data) => {
     li.appendChild(a);
     fragment.appendChild(li);
     // set asset list content
-    a.innerHTML = `<span>${el.callsign}</span>`;
+    a.innerHTML = `<span>${el.vehicleCallsign}</span>`;
   });
   list.appendChild(fragment);
 };
