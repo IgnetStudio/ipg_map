@@ -25,10 +25,27 @@ $helper-space: 1em;
     line-height: 1.5;
 }
 
+@mixin text-gradient {
+    background: $gradient-default;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    text-shadow: none;
+}
+
 @mixin box-shadow {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
 }
 
 @mixin transition-all {
     transition: all 0.3s linear;
+}
+
+@mixin border-gradient {
+    border: 0;
+    border-bottom: 4px solid;
+    border-image: $gradient-default;
+    border-image-slice: 1;
+    text-decoration: none;
 }

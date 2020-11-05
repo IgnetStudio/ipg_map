@@ -58,6 +58,7 @@ const infoWindowContent = (info) => {
     '<div id="bodyContent" class="info-window-content">' +
     `<h2>Flight from: ${info.vehicleCountry}</h2>` +
     `<p>Vehicle last update: ${vehicleResponse}</p>` +
+    `<p>Vehicle direction: ${info.vehicleDirection}</p>` +
     `<p>Is flight grounded? ${info.vehicleStatus}</p>` +
     `<p>Vehicle velocity: ${info.vehicleVelocity}</p>` +
     `<p>Latitude: ${info.vehicleLatitude} & Longitude: ${info.vehicleLongitude}</p>` +
@@ -124,6 +125,14 @@ const createList = (data) => {
   });
   list.appendChild(fragment);
 };
+
+// toggle navigation & summary with checkbox
+
+const assetSidebar = document.querySelector(".asset-sidebar");
+const assetCheckbox = document.getElementById("asset-checkbox");
+assetCheckbox.addEventListener("change", function () {
+  assetSidebar.classList.toggle("hide-element");
+});
 
 // WebSocket initialize
 

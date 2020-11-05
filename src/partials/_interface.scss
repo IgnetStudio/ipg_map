@@ -1,4 +1,11 @@
-// INTERFACE
+// HELPERS
+
+.hide-element {
+    opacity: 0;
+    visibility: hidden;
+}
+
+// MAP
 
 #map {
     height: 100%;

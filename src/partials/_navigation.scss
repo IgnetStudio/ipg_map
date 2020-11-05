@@ -13,10 +13,13 @@
 
 .asset-menu {
     @include flex-center;
+    background: $color-light;
     text-align: center;
     margin: 0 auto;
     position: relative;
     height: 10vh;
+    z-index: 3;
+    width: 100%;
 }
 
 .asset-toggle {
@@ -48,33 +51,55 @@
     height: $helper-space * 2.5;
 }
 
-.asset-summary,
 .asset-sidebar {
+    @include transition-all;
     display: flex;
     justify-content: center;
     background: $gradient-default;
     width: 100%;
     height: 90vh;
-    opacity: 0;
+    z-index: 2;
 }
 
 .asset-summary {
-    @include grid-center;
+    display: grid;
+    place-items: baseline;
     position: inherit;
-    opacity: 1;
     width: auto;
+    height: 90vh;
+    z-index: 1;
+    margin-top: 5em;
+    background: $color-primary;
 }
 
 .asset-details {
-    margin: $helper-space / 4;
-    padding: $helper-space (0);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background: $color-primary;
     width: 100%;
     min-width: 20vw;
-}
-
-.asset-toggle:checked ~ .asset-sidebar {
-    min-height: 90vh;
+    height: 80vh;
+    h1 {
+        @include text-gradient;
+        font-size: $helper-space * 2.5;
+        line-height: 1.25;
+    }
+    h2 {
+        font-size: $helper-space * 1.5;
+        @include border-gradient;
+        padding-bottom: $helper-space / 4;
+        color: $color-side;
+    }
+    ul {
+        text-align: center;
+        li {
+            margin: $helper-space * 0.75;
+            a {
+                color: $color-side;
+            }
+        }
+    }
 }
 
 .asset-list {
@@ -92,7 +117,6 @@
         position: relative;
         flex: 1 0 auto;
         align-items: center;
-        list-style: none;
         &:not(:last-child) {
             margin-bottom: $helper-space;
         }

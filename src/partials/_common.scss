@@ -9,12 +9,22 @@ h2 {
     @include main-font;
     @include text-uppercase;
     @include text-height;
+    width: 100%;
+    text-align: center;
 }
 
 p,
 li {
     @include side-font;
     @include text-height;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration-skip: ink;
 }
 
 button,

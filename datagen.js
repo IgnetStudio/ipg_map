@@ -31,6 +31,7 @@ const parseData = (data) => {
       vehicleLatitude: el[6] || "latitude: unknown", // as above, but for latitude
       vehicleStatus: el[8], // boolean (value which indicates if plane has landed)
       vehicleVelocity: el[9] || "velocity: unknown", // float (vehicleVelocity over ground in m/s, can be null)
+      vehicleDirection: el[10] || "direction: unknown", // float (true track in decimal degrees, can be null)
     };
     // }
   });
