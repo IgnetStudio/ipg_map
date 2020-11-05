@@ -65,7 +65,7 @@ const infoWindowContent = (info) => {
     `<p>Last update: ${vehicleResponse}</p>` +
     `<p>Flight from ${info.vehicleCountry}</p>` +
     `<p>Direction: ${formatDirection}°</p>` +
-    `<p>Velocity: ${formatVelocity} m/s</p>` +
+    `<p>Velocity: ${formatVelocity}m/s</p>` +
     `<p>Latitude: ${info.vehicleLatitude}</p>` +
     `<p>Longitude: ${info.vehicleLongitude}</p>` +
     "</div>" +
@@ -125,6 +125,7 @@ const createList = (data) => {
     // prepare asset list item
     const li = document.createElement("li");
     li.classList.add("asset-item");
+    li.setAttribute("tabindex", "0");
     li.appendChild(a);
     fragment.appendChild(li);
     // set asset list content

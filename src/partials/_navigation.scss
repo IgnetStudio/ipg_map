@@ -3,7 +3,9 @@
 .asset-wrapper {
     @include grid-center;
     @include box-shadow;
+    @include border-all-gradient;
     position: fixed;
+    overflow: hidden;
     right: 0;
     z-index: 1;
     height: 100vh;
@@ -17,6 +19,7 @@
 
 .asset-menu {
     @include flex-center;
+    @include border-bottom-gradient;
     background: $color-light;
     text-align: center;
     margin: 0 auto;
@@ -59,10 +62,10 @@
     @include transition-all;
     display: flex;
     justify-content: center;
-    background: $gradient-default;
     width: 100%;
     height: 90vh;
     z-index: 2;
+
     @include view-mobile {
         height: 20vh;
         width: 100vw;
@@ -73,8 +76,10 @@
     display: grid;
     place-items: baseline;
     position: inherit;
-    width: auto;
+    width: 100%;
     height: 90vh;
+    height: calc(90vh - 0.5em);
+    width: calc(20vw - 0.5em);
     z-index: 1;
     margin-top: 10vh;
     background: $color-primary;
@@ -91,7 +96,6 @@
     flex-direction: column;
     background: $color-primary;
     width: 100%;
-    min-width: 20vw;
     height: 80vh;
     @include view-mobile {
         height: 20vh;
@@ -107,8 +111,6 @@
     }
     h2 {
         font-size: $helper-space * 1.5;
-        @include border-gradient;
-        padding-bottom: $helper-space * 0.75;
         color: $color-side;
         @include view-mobile {
             font-size: $helper-space * 1.5;
@@ -147,6 +149,16 @@
         position: relative;
         flex: 1 0 auto;
         align-items: center;
+        &:focus {
+            outline: 0;
+            span {
+                background-image: $gradient-default;
+                color: $color-primary;
+                &:before {
+                    background: url("img/plane-invert.svg") no-repeat;
+                }
+            }
+        }
         @include view-desktop {
             &:not(:last-child) {
                 margin-bottom: $helper-space;

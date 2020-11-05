@@ -50,7 +50,13 @@ $helper-space: 1em;
     filter: invert(100%);
 }
 
-@mixin border-gradient {
+@mixin border-all-gradient {
+    border: 4px solid;
+    border-image: $gradient-default;
+    border-image-slice: 1;
+}
+
+@mixin border-bottom-gradient {
     border: 0;
     border-bottom: 4px solid;
     border-image: $gradient-default;
