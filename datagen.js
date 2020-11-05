@@ -16,7 +16,7 @@ const getData = (io) => {
     const flightData = parseData(response.data.states);
 
     io.emit("flight", flightData);
-  }, 65000); // this value can be amended to refresh data, due to API limitations - example safe value is 65000
+  }, 7500); // data refresh in ms
 };
 
 // responses (property & index) passed from https://opensky-network.org/apidoc/rest.html

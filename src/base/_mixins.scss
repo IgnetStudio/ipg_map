@@ -49,3 +49,14 @@ $helper-space: 1em;
     border-image-slice: 1;
     text-decoration: none;
 }
+
+@mixin opacity-animation {
+    @keyframes intro {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}

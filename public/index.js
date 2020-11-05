@@ -56,12 +56,16 @@ const infoWindowContent = (info) => {
     "</div>" +
     `<h1 id="firstHeading" class="info-window-title">${info.vehicleCallsign}</h1>` +
     '<div id="bodyContent" class="info-window-content">' +
-    `<h2>Flight from: ${info.vehicleCountry}</h2>` +
-    `<p>Vehicle last update: ${vehicleResponse}</p>` +
-    `<p>Vehicle direction: ${info.vehicleDirection}</p>` +
-    `<p>Is flight grounded? ${info.vehicleStatus}</p>` +
-    `<p>Vehicle velocity: ${info.vehicleVelocity}</p>` +
-    `<p>Latitude: ${info.vehicleLatitude} & Longitude: ${info.vehicleLongitude}</p>` +
+    `<h2>Vehicle data</h2>` +
+    `<p>Status: <strong>${
+      info.vehicleStatus ? "grounded" : "active"
+    }</strong></p>` +
+    `<p>Last update: ${vehicleResponse}</p>` +
+    `<p>Flight from ${info.vehicleCountry}</p>` +
+    `<p>Direction: ${info.vehicleDirection}°</p>` +
+    `<p>Velocity: ${info.vehicleVelocity} m/s</p>` +
+    `<p>Latitude: ${info.vehicleLatitude}</p>` +
+    `<p>Longitude: ${info.vehicleLongitude}</p>` +
     "</div>" +
     "</div>"
   );

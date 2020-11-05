@@ -40,25 +40,19 @@
     height: $helper-space * 2.5;
     cursor: url("img/pointer.svg"), pointer;
     &::before {
-        content: url("img/plane.svg");
-        @include view-mobile {
-            content: url("img/close.svg");
-        }
+        content: url("img/close.svg");
     }
 }
 
 .asset-toggle:checked ~ .asset-label:before {
     display: block;
     position: absolute;
-    content: url("img/close.svg");
+    content: url("img/plane.svg");
     top: 0;
     left: 0;
     z-index: 2;
     width: $helper-space * 2.5;
     height: $helper-space * 2.5;
-    @include view-mobile {
-        content: url("img/plane.svg");
-    }
 }
 
 .asset-sidebar {
