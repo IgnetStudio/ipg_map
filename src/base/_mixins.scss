@@ -42,6 +42,14 @@ $helper-space: 1em;
     transition: all 0.3s linear;
 }
 
+@mixin transition-filter {
+    transition: filter 0.3s linear;
+}
+
+@mixin color-invert {
+    filter: invert(100%);
+}
+
 @mixin border-gradient {
     border: 0;
     border-bottom: 4px solid;

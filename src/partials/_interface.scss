@@ -5,6 +5,25 @@
     visibility: hidden;
 }
 
+.helpers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    .contrast-toggle {
+        background: url("img/contrast.svg") no-repeat;
+        width: 32px;
+        height: 32px;
+        border: 0;
+    }
+}
+
+.dark-mode {
+    @include color-invert;
+    @include transition-filter;
+}
+
 // MAP
 
 #map {

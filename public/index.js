@@ -101,6 +101,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 6,
     center: mapPosition,
+    mapTypeControl: false,
     zoomControl: true,
     scaleControl: true,
   });
@@ -136,6 +137,15 @@ const assetSidebar = document.querySelector(".asset-sidebar");
 const assetCheckbox = document.getElementById("asset-checkbox");
 assetCheckbox.addEventListener("change", function () {
   assetSidebar.classList.toggle("hide-element");
+});
+
+// toggle dark mode
+
+const body = document.querySelector("body");
+const toggleBtn = document.querySelector(".contrast-toggle");
+
+toggleBtn.addEventListener("click", function () {
+  body.classList.toggle("dark-mode");
 });
 
 // WebSocket initialize
