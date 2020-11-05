@@ -24,9 +24,12 @@
         color: $color-side;
         height: 100%;
         width: 100%;
-        padding: 0.75em;
-        border-radius: 2em;
+        padding: $helper-space * 0.75;
+        border-radius: $helper-space * 2;
         font-size: $helper-space;
+        @include view-mobile {
+            padding: $helper-space * 0.5;
+        }
         &:before {
             position: absolute;
             background: url("img/plane.svg") no-repeat;

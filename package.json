@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "dev": "node ./node_modules/nodemon/bin/nodemon.js --ignore node_modules app.js"
+    "dev": "node-sass src/index.scss public/index.min.css && node ./node_modules/nodemon/bin/nodemon.js --ignore node_modules app.js"
   },
   "dependencies": {
     "axios": "^0.21.0",

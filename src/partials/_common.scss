@@ -46,7 +46,7 @@ strong {
 ::-webkit-scrollbar {
     width: $helper-space;
     @include view-mobile {
-        width: $helper-space * 1.5;
+        height: $helper-space * 1.5;
     }
 }
 

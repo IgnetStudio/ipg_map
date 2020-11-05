@@ -28,7 +28,7 @@
 
 #map {
     height: 100%;
-    width: 80vw;
+    width: 75vw;
     @include view-mobile {
         width: 100vw;
     }
@@ -39,12 +39,19 @@
     @include border-all-gradient;
     background: $color-primary;
     color: $color-side;
+    @include view-mobile {
+        min-width: 60vw !important;
+    }
 
     h1.info-window-title {
         @include text-gradient;
         @include border-bottom-gradient;
         font-size: $helper-space * 2.5;
-        margin-top: $helper-space / 8;
+        margin-top: 3px;
+        padding: $helper-space / 8;
+        @include view-mobile {
+            font-size: $helper-space * 2;
+        }
     }
 
     .info-window-content {
@@ -54,12 +61,21 @@
         flex-wrap: wrap;
         background-color: $color-light;
         width: 25vw;
-        padding: $helper-space * 0.75;
+        @include view-mobile {
+            width: auto;
+        }
+        padding: $helper-space;
         h2 {
             font-size: $helper-space * 1.5;
+            @include view-mobile {
+                font-size: $helper-space * 1.25;
+            }
         }
         p {
             font-size: $helper-space * 1.25;
+            @include view-mobile {
+                font-size: $helper-space;
+            }
         }
     }
 }
@@ -78,11 +94,14 @@
 button.gm-ui-hover-effect {
     background: url("img/close.svg") !important;
     opacity: 1;
-    top: $helper-space * 0.8 !important;
-    right: $helper-space * 0.8 !important;
+    top: $helper-space * 1.1 !important;
+    right: $helper-space * 0.6 !important;
     width: $helper-space * 3 !important;
     height: $helper-space * 3 !important;
     cursor: url("img/pointer.svg"), pointer !important;
+    @include view-mobile {
+        top: $helper-space * 0.6 !important;
+    }
     & > img {
         visibility: hidden;
     }

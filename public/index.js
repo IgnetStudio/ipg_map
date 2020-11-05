@@ -15,7 +15,7 @@ const getArrayIndex = (vehicleCallsign, arrayToSearch) => {
   const testMarker = (marker) => {
     const doMatch = marker.title === vehicleCallsign;
     return doMatch;
-  }; // returns Boolean; "true" if marker match to vehicleCallsign
+  }; // returns Boolean; "true" if marker match to callsign
   const obj = arrayToSearch.find(testMarker);
   const index = arrayToSearch.indexOf(obj);
   return index;
@@ -65,7 +65,7 @@ const infoWindowContent = (info) => {
     `<p>Last update: ${vehicleResponse}</p>` +
     `<p>Flight from ${info.vehicleCountry}</p>` +
     `<p>Direction: ${formatDirection}°</p>` +
-    `<p>Velocity: ${formatVelocity}m/s</p>` +
+    `<p>Velocity: ${formatVelocity} m/s</p>` +
     `<p>Latitude: ${info.vehicleLatitude}</p>` +
     `<p>Longitude: ${info.vehicleLongitude}</p>` +
     "</div>" +
@@ -103,6 +103,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 6,
     center: mapPosition,
+    streetViewControl: false,
     mapTypeControl: false,
     zoomControl: true,
     scaleControl: true,
