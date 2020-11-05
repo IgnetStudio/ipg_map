@@ -40,7 +40,7 @@ const handleMarker = (map, info) => {
 };
 
 const infoWindowContent = (info) => {
-  // date format settings
+  // settings
   const date = new Date(info.vehicleSignal * 1000);
   let hours = date.getHours();
   hours = hours < 10 ? "0" + hours : hours;
@@ -49,6 +49,8 @@ const infoWindowContent = (info) => {
   let seconds = date.getSeconds();
   seconds = seconds < 10 ? "0" + seconds : seconds;
   const vehicleResponse = `${hours}:${minutes}:${seconds}`;
+  const formatDirection = info.vehicleDirection.toString().split(".")[0];
+  const formatVelocity = info.vehicleVelocity.toString().split(".")[0];
   // Google Maps info window content
   return (
     '<div id="content" class="info-window-wrapper">' +
@@ -62,8 +64,8 @@ const infoWindowContent = (info) => {
     }</strong></p>` +
     `<p>Last update: ${vehicleResponse}</p>` +
     `<p>Flight from ${info.vehicleCountry}</p>` +
-    `<p>Direction: ${info.vehicleDirection}°</p>` +
-    `<p>Velocity: ${info.vehicleVelocity} m/s</p>` +
+    `<p>Direction: ${formatDirection}°</p>` +
+    `<p>Velocity: ${formatVelocity} m/s</p>` +
     `<p>Latitude: ${info.vehicleLatitude}</p>` +
     `<p>Longitude: ${info.vehicleLongitude}</p>` +
     "</div>" +

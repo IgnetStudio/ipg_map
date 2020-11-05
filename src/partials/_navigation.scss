@@ -100,6 +100,7 @@
         @include text-gradient;
         font-size: $helper-space * 2.5;
         line-height: 1.25;
+        margin-top: $helper-space / 2;
         @include view-mobile {
             font-size: $helper-space * 2;
         }
@@ -107,7 +108,7 @@
     h2 {
         font-size: $helper-space * 1.5;
         @include border-gradient;
-        padding-bottom: $helper-space / 4;
+        padding-bottom: $helper-space * 0.75;
         color: $color-side;
         @include view-mobile {
             font-size: $helper-space * 1.5;
@@ -115,6 +116,7 @@
     }
     ul {
         text-align: center;
+        margin-top: $helper-space / 2;
         li {
             margin: $helper-space * 0.75;
             @include view-mobile {
@@ -151,7 +153,14 @@
             }
         }
         @include view-mobile {
-            margin: 0 ($helper-space);
+            margin: 0 ($helper-space / 2);
+            &:first-child {
+                margin-left: 0;
+                padding-left: $helper-space;
+            }
+            &:last-child {
+                padding-right: $helper-space;
+            }
         }
     }
 }

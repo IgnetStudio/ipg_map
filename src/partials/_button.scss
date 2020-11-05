@@ -19,6 +19,7 @@
         @include flex-center;
         @include text-uppercase;
         @include transition-all;
+        position: relative;
         background: $color-light;
         color: $color-side;
         height: 100%;
@@ -26,10 +27,25 @@
         padding: 0.75em;
         border-radius: 2em;
         font-size: $helper-space;
+        &:before {
+            position: absolute;
+            background: url("img/plane.svg") no-repeat;
+            content: "";
+            left: $helper-space * 0.75;
+            width: 40px;
+            height: 40px;
+            zoom: 0.75;
+            @include view-mobile {
+                display: none;
+            }
+        }
     }
 
     &:hover span {
         background-image: $gradient-default;
         color: $color-primary;
+        &:before {
+            background: url("img/plane-invert.svg") no-repeat;
+        }
     }
 }

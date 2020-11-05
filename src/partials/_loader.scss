@@ -2,9 +2,9 @@
 
 .asset-loader {
     border: 3px solid $color-violet;
-    border-radius: $helper-space;
-    height: $helper-space;
-    width: $helper-space;
+    border-radius: 50%;
+    height: $helper-space * 2;
+    width: $helper-space * 2;
     animation: loader-pulse 1s ease-out infinite;
     animation-iteration-count: infinite;
     opacity: 0;
