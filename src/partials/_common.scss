@@ -37,7 +37,10 @@ img {
 }
 
 ::-webkit-scrollbar {
-    width: 0.75em;
+    width: $helper-space;
+    @include view-mobile {
+        width: $helper-space * 1.5;
+    }
 }
 
 ::-webkit-scrollbar-thumb {

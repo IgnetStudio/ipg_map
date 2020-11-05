@@ -10,6 +10,9 @@
 #map {
     height: 100%;
     width: 80vw;
+    @include view-mobile {
+        width: 100vw;
+    }
 }
 
 .info-window-wrapper {

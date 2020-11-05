@@ -6,13 +6,13 @@
     display: block;
     position: relative;
     height: auto;
-    width: 8em;
+    width: $helper-space * 10;
     padding: 0.25em;
     border-radius: 2em;
     text-decoration: none;
 
     @include view-mobile {
-        width: auto;
+        width: $helper-space * 6;
     }
 
     span {

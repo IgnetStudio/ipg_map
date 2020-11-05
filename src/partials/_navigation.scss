@@ -9,6 +9,10 @@
     height: 100vh;
     width: 20vw;
     background: transparent;
+    @include view-mobile {
+        width: 100vw;
+        height: 30vh;
+    }
 }
 
 .asset-menu {
@@ -37,6 +41,9 @@
     cursor: url("img/pointer.svg"), pointer;
     &::before {
         content: url("img/plane.svg");
+        @include view-mobile {
+            content: url("img/close.svg");
+        }
     }
 }
 
@@ -49,6 +56,9 @@
     z-index: 2;
     width: $helper-space * 2.5;
     height: $helper-space * 2.5;
+    @include view-mobile {
+        content: url("img/plane.svg");
+    }
 }
 
 .asset-sidebar {
@@ -59,6 +69,10 @@
     width: 100%;
     height: 90vh;
     z-index: 2;
+    @include view-mobile {
+        height: 20vh;
+        width: 100vw;
+    }
 }
 
 .asset-summary {
@@ -68,8 +82,13 @@
     width: auto;
     height: 90vh;
     z-index: 1;
-    margin-top: 5em;
+    margin-top: 10vh;
     background: $color-primary;
+    @include view-mobile {
+        height: 20vh;
+        width: 100vw;
+        opacity: 0;
+    }
 }
 
 .asset-details {
@@ -80,21 +99,33 @@
     width: 100%;
     min-width: 20vw;
     height: 80vh;
+    @include view-mobile {
+        height: 20vh;
+    }
     h1 {
         @include text-gradient;
         font-size: $helper-space * 2.5;
         line-height: 1.25;
+        @include view-mobile {
+            font-size: $helper-space * 2;
+        }
     }
     h2 {
         font-size: $helper-space * 1.5;
         @include border-gradient;
         padding-bottom: $helper-space / 4;
         color: $color-side;
+        @include view-mobile {
+            font-size: $helper-space * 1.5;
+        }
     }
     ul {
         text-align: center;
         li {
             margin: $helper-space * 0.75;
+            @include view-mobile {
+                margin: $helper-space * 0.5;
+            }
             a {
                 color: $color-side;
             }
@@ -111,14 +142,22 @@
     background: $color-primary;
     margin: $helper-space / 4;
     padding: $helper-space (0);
+    @include view-mobile {
+        flex-direction: row;
+    }
 
     .asset-item {
         display: flex;
         position: relative;
         flex: 1 0 auto;
         align-items: center;
-        &:not(:last-child) {
-            margin-bottom: $helper-space;
+        @include view-desktop {
+            &:not(:last-child) {
+                margin-bottom: $helper-space;
+            }
+        }
+        @include view-mobile {
+            margin: 0 ($helper-space);
         }
     }
 }
