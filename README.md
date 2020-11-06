@@ -4,6 +4,14 @@ Showing and refreshing an asset list on a map and in a list.
 
 ---
 
+## App Preview
+
+![Preview](https://ljwwa.eu/img/app-preview.gif)
+
+[Demo](https://ljwwa.eu/)
+
+---
+
 ## Installation
 
 1. Install [node.js](https://nodejs.org/en/)
@@ -14,7 +22,7 @@ Showing and refreshing an asset list on a map and in a list.
 
 3. Install dependencies:
 
-`yarn install`
+`yarn`
 
 4. Launch page locally (http://localhost:3000/):
 
@@ -38,5 +46,3 @@ ignet.studio@gmail.com
 - [Nodemon](https://nodemon.io/)
 - [Sass](https://sass-lang.com/)
 - [node-sass](https://www.npmjs.com/package/node-sass/)
-
-<!-- ## GIF placeholder -->

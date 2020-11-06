@@ -1,5 +1,3 @@
-// code goes here
-
 let map;
 let markers = [];
 let infoWindows = [];
@@ -40,7 +38,7 @@ const handleMarker = (map, info) => {
 };
 
 const infoWindowContent = (info) => {
-  // settings
+  // time & units settings
   const date = new Date(info.vehicleSignal * 1000);
   let hours = date.getHours();
   hours = hours < 10 ? "0" + hours : hours;
@@ -51,7 +49,7 @@ const infoWindowContent = (info) => {
   const vehicleResponse = `${hours}:${minutes}:${seconds}`;
   const formatDirection = info.vehicleDirection.toString().split(".")[0];
   const formatVelocity = info.vehicleVelocity.toString().split(".")[0];
-  // Google Maps info window content
+  // info window content
   return (
     '<div id="content" class="info-window-wrapper">' +
     '<div id="siteNotice">' +
@@ -146,16 +144,15 @@ assetCheckbox.addEventListener("change", function () {
 // toggle dark mode
 
 const body = document.querySelector("body");
-const toggleBtn = document.querySelector(".contrast-toggle");
+const contrastToggle = document.querySelector(".contrast-toggle");
 
-toggleBtn.addEventListener("click", function () {
+contrastToggle.addEventListener("click", function () {
   body.classList.toggle("dark-mode");
 });
 
 // WebSocket initialize
 
 const socket = io();
-let flightList = []; // this is the source of the assets list panel, to be displayed as an layer on the map
 
 socket.on("flight", function (data) {
   createList(data);

@@ -9,13 +9,22 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
+    @include view-mobile {
+        @include border-all-gradient;
+        background: $color-light;
+        bottom: 0;
+        top: auto;
+    }
 
     .contrast-toggle {
         background: url("img/contrast.svg") no-repeat;
         width: 32px;
         height: 32px;
         border: 0;
+        @include view-mobile {
+            outline: 0;
+        }
     }
 }
 
@@ -47,7 +56,7 @@
         @include text-gradient;
         @include border-bottom-gradient;
         font-size: $helper-space * 2.5;
-        margin-top: 3px;
+        margin-top: $helper-space / 8;
         padding: $helper-space / 8;
         @include view-mobile {
             font-size: $helper-space * 2;
@@ -62,7 +71,7 @@
         background-color: $color-light;
         width: 25vw;
         @include view-mobile {
-            width: auto;
+            width: 100%;
         }
         padding: $helper-space;
         h2 {
@@ -73,6 +82,7 @@
         }
         p {
             font-size: $helper-space * 1.25;
+            text-align: center;
             @include view-mobile {
                 font-size: $helper-space;
             }
@@ -100,7 +110,9 @@ button.gm-ui-hover-effect {
     height: $helper-space * 3 !important;
     cursor: url("img/pointer.svg"), pointer !important;
     @include view-mobile {
-        top: $helper-space * 0.6 !important;
+        top: auto !important;
+        bottom: $helper-space * 0.3 !important;
+        right: $helper-space * 0.3 !important;
     }
     & > img {
         visibility: hidden;
