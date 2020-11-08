@@ -1,9 +1,5 @@
 // RESET
 
-* {
-    box-sizing: border-box;
-}
-
 html,
 body,
 div,
@@ -111,4 +107,13 @@ html,
 body {
     height: 100%;
     line-height: 1;
+    box-sizing: border-box;
+}
+
+// box-sizing override https://developers.google.com/maps/documentation/javascript/best-practices#css_best_practices
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }

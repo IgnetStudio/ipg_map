@@ -135,9 +135,11 @@ const createList = (data) => {
 
 // toggle navigation & summary with checkbox
 
+const assetWrapper = document.querySelector(".asset-wrapper");
 const assetSidebar = document.querySelector(".asset-sidebar");
 const assetCheckbox = document.getElementById("asset-checkbox");
 assetCheckbox.addEventListener("change", function () {
+  assetWrapper.classList.toggle("asset-mobile");
   assetSidebar.classList.toggle("hide-element");
 });
 

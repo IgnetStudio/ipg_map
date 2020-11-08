@@ -12,7 +12,7 @@
     z-index: 2;
     @include view-mobile {
         @include border-all-gradient;
-        background: $color-light;
+        background: var(--color-light);
         bottom: 0;
         top: auto;
     }
@@ -46,11 +46,8 @@
 .info-window-wrapper {
     @include grid-center;
     @include border-all-gradient;
-    background: $color-primary;
-    color: $color-side;
-    @include view-mobile {
-        min-width: 60vw !important;
-    }
+    background: var(--color-primary);
+    color: var(--color-side);
 
     h1.info-window-title {
         @include text-gradient;
@@ -68,7 +65,7 @@
         align-items: center;
         flex-direction: column;
         flex-wrap: wrap;
-        background-color: $color-light;
+        background-color: var(--color-light);
         width: 25vw;
         @include view-mobile {
             width: 100%;
@@ -95,6 +92,9 @@
 .gm-style .gm-style-iw-c {
     padding: 0 !important;
     border-radius: 0;
+    @include view-mobile {
+        min-width: 70vw !important;
+    }
 }
 
 .gm-style .gm-style-iw-d {
@@ -110,9 +110,8 @@ button.gm-ui-hover-effect {
     height: $helper-space * 3 !important;
     cursor: url("img/pointer.svg"), pointer !important;
     @include view-mobile {
-        top: auto !important;
-        bottom: $helper-space * 0.3 !important;
-        right: $helper-space * 0.3 !important;
+        top: $helper-space * 0.7 !important;
+        right: $helper-space * 0.6 !important;
     }
     & > img {
         visibility: hidden;

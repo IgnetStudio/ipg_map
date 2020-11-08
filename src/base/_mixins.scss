@@ -26,7 +26,7 @@ $helper-space: 1em;
 }
 
 @mixin text-gradient {
-    background: $gradient-default;
+    background: var(--gradient-default);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-box-decoration-break: clone;
@@ -52,14 +52,14 @@ $helper-space: 1em;
 
 @mixin border-all-gradient {
     border: 4px solid;
-    border-image: $gradient-default;
+    border-image: var(--gradient-default);
     border-image-slice: 1;
 }
 
 @mixin border-bottom-gradient {
     border: 0;
     border-bottom: 4px solid;
-    border-image: $gradient-default;
+    border-image: var(--gradient-default);
     border-image-slice: 1;
     text-decoration: none;
 }

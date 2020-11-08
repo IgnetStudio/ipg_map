@@ -2,7 +2,7 @@
 
 .asset-button {
     @include border-radius;
-    background-image: $gradient-default;
+    background-image: var(--gradient-default);
     display: block;
     position: relative;
     height: auto;
@@ -20,8 +20,8 @@
         @include text-uppercase;
         @include transition-all;
         position: relative;
-        background: $color-light;
-        color: $color-side;
+        background: var(--color-light);
+        color: var(--color-side);
         height: 100%;
         width: 100%;
         padding: $helper-space * 0.75;
@@ -45,8 +45,8 @@
     }
 
     &:hover span {
-        background-image: $gradient-default;
-        color: $color-primary;
+        background-image: var(--gradient-default);
+        color: var(--color-primary);
         &:before {
             background: url("img/plane-invert.svg") no-repeat;
         }

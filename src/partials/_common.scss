@@ -35,7 +35,7 @@ a,
 img {
     cursor: url("img/pointer.svg"), pointer;
     &:focus {
-        outline: 2px solid $color-violet;
+        outline: 2px solid var(--color-violet);
     }
 }
 
@@ -53,9 +53,9 @@ strong {
 ::-webkit-scrollbar-thumb {
     @include border-radius;
     @include box-shadow;
-    background: linear-gradient(to bottom, $color-violet, $color-orchid);
+    background: linear-gradient(to bottom, var(--color-violet), var(--color-orchid));
 }
 
 ::-webkit-scrollbar-track {
-    background: $color-side;
+    background: var(--color-side);
 }
