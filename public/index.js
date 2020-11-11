@@ -35,11 +35,11 @@ const handleMarker = (map, info) => {
     const infoWindowIndex = getArrayIndex(info.vehicleCallsign, infoWindows);
     infoWindows[infoWindowIndex].setContent(infoWindowContent(info));
   }
-  // Add a marker clusterer to manage the markers.
-  const markerCluster = new MarkerClusterer(map, markers, {
-    imagePath:
-      "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-  });
+  // Add a marker clusterer to manage the markers
+  // const markerCluster = new MarkerClusterer(map, markers, {
+  //   imagePath:
+  //     "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+  // });
 };
 
 const infoWindowContent = (info) => {
@@ -79,16 +79,16 @@ const infoWindowContent = (info) => {
 const createMarker = (map, info) => {
   const mapPosition = { lat: info.vehicleLatitude, lng: info.vehicleLongitude };
   const contentString = infoWindowContent(info);
-  const formatDirection = info.vehicleDirection;
+  const vehicleAngle = info.vehicleDirection - 90;
   const plane = {
     path:
       "M34.531,16.322H25.81l-2.193-3.655H26c0.368,0,0.667-0.299,0.667-0.667S26.368,11.333,26,11.333h-3.184l-4.954-8.255    c-0.282-0.47-0.778-0.751-1.326-0.751h-1.965c-0.338,0-0.642,0.144-0.856,0.405c-0.214,0.262-0.295,0.589-0.229,0.918    l2.535,12.671H8.557l-2.734-3.416c-0.298-0.376-0.728-0.583-1.209-0.583H3.621c-0.352,0-0.674,0.161-0.881,0.438    c-0.213,0.279-0.279,0.634-0.183,0.973l1.644,5.753l-1.644,5.752c-0.097,0.337-0.031,0.692,0.181,0.972    c0.211,0.279,0.533,0.439,0.883,0.439h0.993c0.48,0,0.91-0.206,1.208-0.58l2.735-3.418h7.464l-2.534,12.669    c-0.067,0.333,0.015,0.66,0.226,0.916c0.214,0.263,0.519,0.408,0.858,0.408h1.965c0.549,0,1.044-0.281,1.326-0.75l4.938-8.229    h3.143c0.368,0,0.667-0.299,0.667-0.667s-0.298-0.667-0.667-0.667h-2.343l2.208-3.68h8.721c1.745,0,3.166-1.42,3.166-3.167    C37.696,17.741,36.276,16.322,34.531,16.322z M34.531,21.32h-9.476l-8.336,13.89c-0.042,0.071-0.099,0.103-0.183,0.103h-1.688    l2.799-13.993H7.917L4.78,25.239c-0.045,0.057-0.092,0.079-0.166,0.079H3.922l1.666-5.831l-1.666-5.831h0.692    c0.075,0,0.12,0.021,0.167,0.08l3.136,3.918h9.731L14.849,3.661h1.688c0.083,0,0.14,0.032,0.183,0.104l8.336,13.891h9.476    c1.01,0,1.832,0.822,1.832,1.833S35.541,21.32,34.531,21.32z",
     fillColor: "#5f4b8b",
-    fillOpacity: 0.85,
+    fillOpacity: 0.95,
     anchor: new google.maps.Point(0, 0),
     strokeWeight: 0,
-    scale: 0.85,
-    rotation: formatDirection,
+    scale: 0.95,
+    rotation: vehicleAngle,
   };
 
   const infoWindow = new google.maps.InfoWindow({
@@ -120,6 +120,7 @@ function initMap() {
     mapTypeControl: false,
     zoomControl: true,
     scaleControl: true,
+    mapTypeId: google.maps.MapTypeId.TERRAIN,
   });
 }
 
