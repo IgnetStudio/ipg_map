@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
-    "dev": "node-sass src/index.scss public/index.min.css && node ./node_modules/nodemon/bin/nodemon.js --ignore node_modules app.js"
+    "css": "node-sass src/index.scss public/index.min.css",
+    "dev": "nodemon --ignore node_modules app.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -15,8 +16,7 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "node-sass": "^5.0.0",
-    "nodemon": "^2.0.6",
-    "parcel-bundler": "^1.12.4"
+    "node-sass": "^9.0.0",
+    "nodemon": "^2.0.6"
   }
 }
