@@ -6,18 +6,57 @@ const boxLeft = "14.5068"; // LJ longitude
 const boxTop = "52.2337"; // WWA latitide
 const boxRight = "21.0714"; // WWA longitude
 
-const getData = (io) => {
-  setInterval(async () => {
+const init = {
+  DELAY: 30,
+};
+
+const state = {
+  delay: init.DELAY,
+  timeoutId: 0,
+  connectionCount: 0,
+};
+
+async function refresh(io) {
+  console.log(`refresh started`);
+  try {
     const response = await axios({
       url: `https://opensky-network.org/api/states/all?lamin=${boxBottom}&lomin=${boxLeft}&lamax=${boxTop}&lomax=${boxRight}`,
       method: "get",
     });
-
+    console.log(`response received`);
     const flightData = parseData(response.data.states);
-
+    state.delay = init.DELAY;
+    state.timeoutId = setTimeout(async () => await refresh(io), state.delay * 1000);
+    io.emit("delay", { delay: state.delay });
     io.emit("flight", flightData);
-  }, 4000); // data refresh in ms
+  } catch (e) {
+    console.log(`response error`);
+    const retryDelay = e?.response?.headers["x-rate-limit-retry-after-seconds"];
+    if (!retryDelay) return;
+    console.log(`retry delay ${retryDelay}`);
+    state.delay = parseInt(retryDelay);
+    state.timeoutId = setTimeout(async () => await refresh(io), state.delay * 1000);
+    io.emit("delay", { delay: state.delay });
+  }
 };
+
+function start(io) {
+  console.log(`ws started (total: ${state.connectionCount})`);
+  io.on("connection", (socket) => {
+    state.connectionCount += 1;
+    console.log(`user connected (total: ${state.connectionCount})`);
+    socket.on("disconnect", () => {
+      state.connectionCount -= 1;
+      console.log(`user disconnected (total: ${state.connectionCount})`);
+      if (state.connectionCount) return;
+      if (!state.timeoutId) return;
+      clearTimeout(state.timeoutId);
+      state.timeoutId = 0;
+    });
+    if (state.timeoutId) return;
+    state.timeoutId = setTimeout(async () => await refresh(io), 1000);
+  });
+}
 
 // responses (property & index) passed from https://opensky-network.org/apidoc/rest.html
 
@@ -33,8 +72,7 @@ const parseData = (data) => {
       vehicleVelocity: el[9] || "velocity: unknown", // float (vehicleVelocity over ground in m/s, can be null)
       vehicleDirection: el[10] || "direction: unknown", // float (true track in decimal degrees, can be null)
     };
-    // }
   });
 };
 
-module.exports = getData;
+module.exports = start;

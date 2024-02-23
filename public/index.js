@@ -62,8 +62,7 @@ const infoWindowContent = (info) => {
     `<h1 id="firstHeading" class="info-window-title">${info.vehicleCallsign}</h1>` +
     '<div id="bodyContent" class="info-window-content">' +
     `<h2>Vehicle data</h2>` +
-    `<p>Status: <strong>${
-      info.vehicleStatus ? "grounded" : "active"
+    `<p>Status: <strong>${info.vehicleStatus ? "grounded" : "active"
     }</strong></p>` +
     `<p>Last update: ${vehicleResponse}</p>` +
     `<p>Flight from ${info.vehicleCountry}</p>` +
@@ -144,7 +143,7 @@ const createList = (data) => {
     li.appendChild(a);
     fragment.appendChild(li);
     // set asset list content
-    a.innerHTML = `<span>${el.vehicleCallsign}</span>`;
+    a.innerHTML = '<span>' + el.vehicleCallsign + '</span>';
   });
   list.appendChild(fragment);
 };
@@ -177,4 +176,11 @@ socket.on("flight", function (data) {
   data.forEach((el) => {
     handleMarker(map, el); // create or update marker
   });
+  const error = document.querySelector('.error');
+  error.innerHTML = '';
+});
+
+socket.on("delay", function (data) {
+  const error = document.querySelector('.error');
+  error.innerHTML = `<span style="color:red;">Next update in ${data.delay} seconds.</span>`;
 });
