@@ -117,3 +117,7 @@ button.gm-ui-hover-effect {
         visibility: hidden;
     }
 }
+
+.gm-ui-hover-effect>span {
+    display: none !important;
+}
