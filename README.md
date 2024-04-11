@@ -6,8 +6,7 @@ Showing and refreshing an asset list on a map and in a list.
 
 ## App Preview
 
-![Preview](https://aignet.smallhost.pl/img/app-preview.gif)
-
+<img src="https://aignet.smallhost.pl/img/app-preview.gif" alt="App preview" />
 [Demo](https://aignet.smallhost.pl/)
 
 ---
