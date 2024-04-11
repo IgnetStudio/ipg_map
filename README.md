@@ -6,9 +6,9 @@ Showing and refreshing an asset list on a map and in a list.
 
 ## App Preview
 
-![Preview](https://ljwwa.eu/img/app-preview.gif)
+![Preview](https://aignet.smallhost.pl/img/app-preview.gif)
 
-[Demo](https://ljwwa.eu/)
+[Demo](https://aignet.smallhost.pl/)
 
 ---
 
